@@ -3,11 +3,11 @@
 ## Description
 
 This application is an implementation of a simple task list. The main functions that is going to be realized in this project:
-- add new goal
-- edit goal
-- mark goal as done or failed
-- remove goal
-- clear all todo list
+- Add new goal
+- Edit goal
+- Mark goal as done or failed
+- Remove goal
+- Clear all todo list
 
 ## What is already done:
 - List representation
@@ -30,6 +30,6 @@ This application is an implementation of a simple task list. The main functions 
 ### Secondary theme
 ![Main page](./images/1b.png)
 ![Input form](./images/2b.png)
-Resources: 
+## Resources: 
 - [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
 - [online documentation](https://flutter.dev/docs)
