@@ -1,10 +1,13 @@
 # TODO: list
 
-This application be a 
-
 ## Description
 
-This application is an implementation of a simple task list.
+This application is an implementation of a simple task list. The main functions that is going to be realized in this project:
+- add new goal
+- edit goal
+- mark goal as done or failed
+- remove goal
+- clear all todo list
 
 ## What is already done:
 - List representation
