@@ -6,51 +6,65 @@ import 'package:todo_list/todolist/utils.dart' as utils;
 class TodoListState extends State<TodoList> {
   final ScrollController _scrollController = new ScrollController();
   List<TodoModal> _todoModal = [];
-  TextEditingController _titleController1 = TextEditingController();
-  TextEditingController _titleController2 = TextEditingController();
+  TextEditingController _titleController = TextEditingController();
+  TextEditingController _textController = TextEditingController();
   
   Future<List<dynamic>>_createAlertDialog (BuildContext context) { 
-    return showDialog(context: context, builder: (context) {
-      return AlertDialog(
-        title: Text('New todo'),
-        content: Column(
-            children: <Widget>[
-              TextField(
-                controller: _titleController1,
-              ),
-              TextField(
-                controller: _titleController2,
-              ),
-            ],
+    return showDialog(
+      context: context,
+      builder: (context) {
+        return Dialog(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20)
           ),
-          
-        actions: <Widget>[
-          MaterialButton(
-            elevation: 5.0,
-            child: Text('Cancel'),
-            onPressed: () {
-              Navigator.of(context).pop();
-              _titleController1.clear();
-              _titleController2.clear();
-            },
+          child: Container(
+            height: 220,
+            padding: EdgeInsets.all(20.0),
+            margin: EdgeInsets.all(10),
+            child: Column(
+              children: <Widget>[
+                TextField(
+                  controller: _titleController,
+                  decoration: InputDecoration(
+                    hintText: "Title"
+                  ),
+                ),
+                TextField(
+                  controller: _textController,
+                  decoration: InputDecoration(
+                    hintText: "Text"
+                  ),
+                ),
+                MaterialButton(
+                  child: Container(
+                    child: Text("Submit"),
+                    padding: EdgeInsets.all(15.0),
+                    margin: EdgeInsets.only(
+                      top: 35.0
+                    ),
+                    decoration: BoxDecoration(
+                      color: utils.getCustomTheme().accentColor,
+                      borderRadius: BorderRadius.circular(20.0)
+                    ),
+                  ),
+                  onPressed: () {
+                    List<dynamic> ret = [
+                      _titleController.text,
+                      _textController.text
+                    ];
+                    Navigator.of(context).pop<List<dynamic>>(ret);
+                      _titleController.clear();
+                      _textController.clear();
+                  }
+                )
+              ],
+            ),
           ),
-          MaterialButton(
-            elevation: 5.0,
-            child: Text('Submit'),
-            onPressed: () {
-              List<dynamic> ret = [
-                _titleController1.text,
-                _titleController2.text
-              ];
-              Navigator.of(context).pop<List<dynamic>>(ret);
-              _titleController1.clear();
-              _titleController2.clear();
-            },
-          ),
-        ],
-      );
-    } );
+        );
+      }
+    );
   }
+  
   _onTodoListUpdate() {
     String newTitle;
     String newText;
